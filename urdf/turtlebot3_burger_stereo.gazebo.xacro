@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<robot name="turtlebot3_burger_sim" xmlns:xacro="http://ros.org/wiki/xacro">
+  <gazebo>
+    <plugin name="turtlebot3_burger_controller" filename="libgazebo_ros_diff_drive.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>/odom</odometryFrame>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <publishWheelTF>false</publishWheelTF>
+      <publishWheelJointState>true</publishWheelJointState>
+      <legacyMode>false</legacyMode>
+      <updateRate>100</updateRate>
+      <leftJoint>wheel_left_joint</leftJoint>
+      <rightJoint>wheel_right_joint</rightJoint>
+      <wheelSeparation>0.160</wheelSeparation>
+      <wheelDiameter>0.066</wheelDiameter>
+      <wheelAcceleration>1</wheelAcceleration>
+      <wheelTorque>10</wheelTorque>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="camera_link">
+    <sensor type="multicamera" name="stereo_camera">
+      <xacro:arg name="camera_width" default="1280"/>
+      <xacro:arg name="camera_height" default="720"/>
+      <xacro:arg name="camera_fov" default="1.571"/>
+      <xacro:arg name="camera_format" default="R8G8B8"/>
+      <xacro:arg name="camera_clip_near" default="0.02"/>
+      <xacro:arg name="camera_clip_far" default="300"/>
+      <xacro:arg name="camera_fps" default="30.0"/>
+
+      <update_rate>$(arg camera_fps)</update_rate>
+
+      <camera name="left">
+        <horizontal_fov>$(arg camera_fov)</horizontal_fov>
+        <image>
+          <width>$(arg camera_width)</width>
+          <height>$(arg camera_height)</height>
+          <format>$(arg camera_format)</format>
+        </image>
+        <clip>
+          <near>$(arg camera_clip_near)</near>
+          <far>$(arg camera_clip_far)</far>
+        </clip>
+      </camera>
+      <camera name="right">
+        <pose>0 -0.12 0 0 0 0</pose>
+        <horizontal_fov>$(arg camera_fov)</horizontal_fov>
+        <image>
+          <width>$(arg camera_width)</width>
+          <height>$(arg camera_height)</height>
+          <format>$(arg camera_format)</format>
+        </image>
+        <clip>
+          <near>$(arg camera_clip_near)</near>
+          <far>$(arg camera_clip_far)</far>
+        </clip>
+      </camera>
+
+      <plugin name="stereo_camera_controller" filename="libgazebo_ros_multicamera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0</updateRate>
+        <cameraName>mobile_base/camera</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>zed_left_camera</frameName>
+        <!-- <rightFrameName>right_camera_optical_frame</rightFrameName> -->
+        <hackBaseline>0.12</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="wheel_left_link">
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+    <kp>500000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="wheel_right_link">
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+    <kp>500000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="caster_back_link">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>1.0</maxVel>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+</robot>

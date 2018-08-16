@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>turtlebot3_stereo_description</name>
+  <version>0.0.0</version>
+  <description>Robot description of Turtlebot3 with stereo camera</description>
+  <maintainer email="fujimoto@aisl.cs.tut.ac.jp">Hironori Fujimoto</maintainer>
+  <license>TODO</license>
+  <!-- <url type="website">http://wiki.ros.org/turtlebot3_stereo_description</url> -->
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>turtlebot3_description</exec_depend>
+</package>
