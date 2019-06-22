@@ -21,8 +21,8 @@
 
   <gazebo reference="camera_link">
     <sensor type="multicamera" name="stereo_camera">
-      <xacro:arg name="camera_width" default="1242"/>
-      <xacro:arg name="camera_height" default="375"/>
+      <xacro:arg name="camera_width" default="1248"/>
+      <xacro:arg name="camera_height" default="376"/>
       <xacro:arg name="camera_fov" default="1.571"/>
       <xacro:arg name="camera_format" default="R8G8B8"/>
       <xacro:arg name="camera_clip_near" default="0.02"/>
