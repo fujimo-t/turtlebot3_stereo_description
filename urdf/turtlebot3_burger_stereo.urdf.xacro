@@ -1,4 +1,7 @@
 <?xml version="1.0" ?>
+<!-- Modified by Hironori Fujimoto <fujimoto@aisl.cs.tut.ac.jp> 
+     Original file from https://github.com/ROBOTIS-GIT/turtlebot3/blob/master/turtlebot3_description/urdf/turtlebot3_burger.urdf.xacro
+-->
 <robot name="turtlebot3_burger" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find turtlebot3_description)/urdf/common_properties.xacro"/>
   <xacro:include filename="$(find turtlebot3_stereo_description)/urdf/turtlebot3_burger_stereo.gazebo.xacro"/>

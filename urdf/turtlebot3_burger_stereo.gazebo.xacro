@@ -1,4 +1,7 @@
 <?xml version="1.0"?>
+<!-- Modified by Hironori Fujimoto <fujimoto@aisl.cs.tut.ac.jp> 
+     Original file from https://github.com/ROBOTIS-GIT/turtlebot3/blob/master/turtlebot3_description/urdf/turtlebot3_burger.gazebo.xacro
+-->
 <robot name="turtlebot3_burger_sim" xmlns:xacro="http://ros.org/wiki/xacro">
   <gazebo>
     <plugin name="turtlebot3_burger_controller" filename="libgazebo_ros_diff_drive.so">
